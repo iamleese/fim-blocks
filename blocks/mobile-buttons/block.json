@@ -1,12 +1,12 @@
 {
 	"$schema": "https://json.schemastore.org/block.json",
 	"apiVersion": 2,
-	"name": "fim-blocks/google-embed-pdf",
-	"version": "2.0",
-	"title": "FIM Google PDF Embed",
-	"category": "embeds",
+	"name": "fim-blocks/mobile-buttons",
+	"version": "0.1.0",
+	"title": "FIM Mobile Buttons",
+	"category": "design",
 	"icon": "smiley",
-	"description": "Embed Google PDF through a public-accessible link",
+	"description": "Buttons for Mobile Landing Page",
 	"supports": {
 		"html": false
 	},

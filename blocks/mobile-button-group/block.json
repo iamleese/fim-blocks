@@ -1,0 +1,17 @@
+{
+	"$schema": "https://json.schemastore.org/block.json",
+	"apiVersion": 2,
+	"name": "fim-blocks/mobile-button-group",
+	"version": "0.1.0",
+	"title": "FIM Mobile Button Group",
+	"category": "design",
+	"icon": "smiley",
+	"description": "Mobile Button Group",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "fim-blocks",
+	"editorScript": "file:./build/index.js",
+	"editorStyle": "file:./build/index.css",
+	"style": "file:./build/style-index.css"
+}

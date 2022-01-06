@@ -13,7 +13,11 @@
 		"start": "wp-scripts start",
 		"packages-update": "wp-scripts packages-update",
 		"start:google-pdf": "wp-scripts start blocks/google-embed-pdf/src/index.js --output-path=blocks/google-embed-pdf/build/",
-		"build:google-pdf": "wp-scripts build blocks/google-embed-pdf/src/index.js --output-path=blocks/google-embed-pdf/build/"
+		"build:google-pdf": "wp-scripts build blocks/google-embed-pdf/src/index.js --output-path=blocks/google-embed-pdf/build/",
+		"start:mobile-group": "wp-scripts start blocks/mobile-button-group/src/index.js --output-path=blocks/mobile-button-group/build/",
+		"build:mobile-group": "wp-scripts build blocks/mobile-button-group/src/index.js --output-path=blocks/mobile-button-group/build/",
+		"start:mobile-buttons": "wp-scripts start blocks/mobile-buttons/src/index.js --output-path=blocks/mobile-buttons/build/",
+		"build:mobile-buttons": "wp-scripts build blocks/mobile-buttons/src/index.js --output-path=blocks/mobile-buttons/build/"
 	},
 	"dependencies": {
 		"@wordpress/block-editor": "^8.0.13",

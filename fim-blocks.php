@@ -23,5 +23,9 @@
 function fim_blocks_block_init() {
 	//Google PDF Embed
 	register_block_type( plugin_dir_path( __FILE__ ) . 'blocks/google-embed-pdf/' );
+	//Mobilt Button Group
+	register_block_type( plugin_dir_path( __FILE__ ) . 'blocks/mobile-buttons/' );
+	//Mobile Buttons
+	register_block_type( plugin_dir_path( __FILE__ ) . 'blocks/mobile-button-group/' );
 }
 add_action( 'init', 'fim_blocks_block_init' );
