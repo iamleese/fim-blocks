@@ -5,10 +5,27 @@
 	"version": "0.1.0",
 	"title": "FIM Google PDF Embed",
 	"category": "embeds",
-	"icon": "smiley",
-	"description": "Embeds Google PDFs that have a public-viewable link",
+	"icon": "media-document",
+	"description": "Embed a Google PDF from a public-viewable link",
 	"supports": {
 		"html": false
+	},
+	"attributes":{
+		"embedURL": {
+			"type": "string",
+			"selector": "value",
+			"default": null
+		},
+		"heightFullscreen": {
+			"type": "boolean",
+			"selector": "checked"
+		},
+		"embedHeight": {
+			"type": "string",
+			"selector": "value",
+			"default": "1200"
+		}
+		
 	},
 	"textdomain": "fim-blocks",
 	"editorScript": "file:./build/index.js",
