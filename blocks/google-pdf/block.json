@@ -1,0 +1,17 @@
+{
+	"$schema": "https://json.schemastore.org/block.json",
+	"apiVersion": 2,
+	"name": "fim-blocks/google-embed-pdf",
+	"version": "2.0",
+	"title": "FIM Google PDF Embed",
+	"category": "embeds",
+	"icon": "smiley",
+	"description": "Embed Google PDF through a public-accessible link",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "fim-blocks",
+	"editorScript": "file:./build/index.js",
+	"editorStyle": "file:./build/index.css",
+	"style": "file:./build/style-index.css"
+}
