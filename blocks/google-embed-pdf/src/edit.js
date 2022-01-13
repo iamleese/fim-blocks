@@ -6,12 +6,21 @@
 import { __ } from '@wordpress/i18n';
 
 /**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
+ * Loads components
+ * @see https://developer.wordpress.org/block-editor/reference-guides/components/
+ */
+
+import { TextControl, ToggleControl, PanelBody, PanelRow, Button } from '@wordpress/components';
+
+/**
+ * React hook that is used to mark the block wrapper element and add Inspector Controls
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
+
+
+import {useState} from '@wordpress/element';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -29,10 +38,88 @@ import './editor.scss';
  *
  * @return {WPElement} Element to render.
  */
-export default function Edit() {
+export default function Edit( {attributes, setAttributes} ) {
+
+	const [ UrlValue, setUrlValue ] = useState(attributes.embedURL);
+
+	//textbox for the URL
+	const inputStyle = {
+		width: '100%'
+		}
+	const isURLSet = !! attributes.embedURL;
+
+	var embedString = attributes.embedURL;
+
+	var embedID = embedString ? embedString.match(/(?<=id=|d\/)([a-zA-Z0-9\-\_\~\.])+/g) : '';
+	var resourceKey = embedString ? embedString.match(/(?<=resourcekey=)([a-zA-Z0-9\-\_\~\.])+/g) : '';
+
+	
+	var fullscreen = attributes.heightFullscreen ? 'full' : '';
+	var frameHeight = attributes.heightFullscreen ? '' : attributes.embedHeight + 'px';
+	var setHeight = embedID ? frameHeight : '' ;
+	
+	const blockProps = useBlockProps({
+		className: { fullscreen },
+		style: { height: setHeight }
+	});
+
+
+	const URLInput = () => {
+		return (
+			<div className="url_container">
+			<TextControl
+				name= 'googleUrl'
+				label='Google Drive PDF URL'
+				value= { attributes.embedURL } 
+				help = {__('eg. https://drive.google.com/open?id=1aC6slHadaja2zhbjvHWAozLvlsOPLIzx','fim-blocks')}
+				style = { inputStyle }
+				className = 'url-input'
+				onChange = {( value ) => setUrlValue( value )}/>
+			<Button
+				onClick= { () => setAttributes({ embedURL : UrlValue}) }
+			>{__('Set PDF URL') }</Button>
+
+			</div>
+		);
+	}
+
 	return (
-		<p {...useBlockProps()}>
-			{__('Fim Blocks – hello from the editor!', 'fim-blocks')}
-		</p>
+		<div {...blockProps}>
+			{! isURLSet && (
+				<URLInput />
+			)}
+			
+			{ isURLSet && (
+				<div className={'inner_frame'}>
+				<Button className={'edit_url_button'}>{__('Edit URL')}</Button>
+				<iframe src={'https://drive.google.com/file/d/'+embedID+'/preview?resourcekey='+resourceKey}/>
+				</div>
+			)}
+
+			<InspectorControls>
+				<PanelBody
+                        title={ __( 'Display Settings', 'fim-blocks' ) }
+                    >
+                    
+						<PanelRow>
+							  <ToggleControl
+								label={__("Full Screen Height", "fim-blocks")}
+								checked={attributes.heightFullscreen ? attributes.heightFullscreen : null}
+								onChange={heightFullscreen => setAttributes({ heightFullscreen })}
+							  />
+						</PanelRow>
+						<PanelRow>
+							<TextControl
+								label={__("Height in Pixels", "fim-blocks")}
+								value= { attributes.embedHeight }
+								className = 'height'
+								onChange= { embedHeight => setAttributes({ embedHeight }) }
+								disabled = {attributes.heightFullscreen ? 'disabled' : null}
+							/>
+						</PanelRow>
+                    </PanelBody>
+			</InspectorControls>
+			
+		</div>
 	);
 }
