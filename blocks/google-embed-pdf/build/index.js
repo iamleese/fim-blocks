@@ -65,7 +65,8 @@ function Edit(_ref) {
     attributes,
     setAttributes
   } = _ref;
-  const [UrlValue, setUrlValue] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(attributes.embedURL); //textbox for the URL
+  const [UrlValue, setUrlValue] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(attributes.embedURL);
+  const [visibility, SetVisibility] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('none'); //textbox for the URL
 
   const inputStyle = {
     width: '100%'
@@ -86,6 +87,13 @@ function Edit(_ref) {
     }
   });
 
+  function handleURLInput() {
+    setAttributes({
+      embedURL: UrlValue
+    });
+    SetVisibility('none');
+  }
+
   const URLInput = () => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "url_container"
@@ -98,17 +106,23 @@ function Edit(_ref) {
       className: "url-input",
       onChange: value => setUrlValue(value)
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
-      onClick: () => setAttributes({
-        embedURL: UrlValue
-      })
+      variant: "tertiary",
+      onClick: () => handleURLInput()
     }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Set PDF URL')));
   };
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, !isURLSet && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(URLInput, null), isURLSet && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: 'inner_frame'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
-    className: 'edit_url_button'
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Edit URL')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("iframe", {
+    variant: "tertiary",
+    className: 'edit_url_button',
+    onClick: () => SetVisibility('block')
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Edit URL')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: 'edit_url_input',
+    style: {
+      display: visibility
+    }
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(URLInput, null)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("iframe", {
     src: 'https://drive.google.com/file/d/' + embedID + '/preview?resourcekey=' + resourceKey
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Display Settings', 'fim-blocks')

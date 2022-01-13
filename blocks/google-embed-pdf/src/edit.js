@@ -41,13 +41,13 @@ import './editor.scss';
 export default function Edit( {attributes, setAttributes} ) {
 
 	const [ UrlValue, setUrlValue ] = useState(attributes.embedURL);
+	const [ visibility, SetVisibility] = useState('none');
 
 	//textbox for the URL
 	const inputStyle = {
 		width: '100%'
 		}
 	const isURLSet = !! attributes.embedURL;
-
 	var embedString = attributes.embedURL;
 
 	var embedID = embedString ? embedString.match(/(?<=id=|d\/)([a-zA-Z0-9\-\_\~\.])+/g) : '';
@@ -63,6 +63,11 @@ export default function Edit( {attributes, setAttributes} ) {
 		style: { height: setHeight }
 	});
 
+	function handleURLInput(){
+		setAttributes({embedURL : UrlValue });
+		SetVisibility('none');
+	}
+
 
 	const URLInput = () => {
 		return (
@@ -76,7 +81,8 @@ export default function Edit( {attributes, setAttributes} ) {
 				className = 'url-input'
 				onChange = {( value ) => setUrlValue( value )}/>
 			<Button
-				onClick= { () => setAttributes({ embedURL : UrlValue}) }
+				variant = 'tertiary'
+				onClick= { () => handleURLInput()  }
 			>{__('Set PDF URL') }</Button>
 
 			</div>
@@ -91,7 +97,13 @@ export default function Edit( {attributes, setAttributes} ) {
 			
 			{ isURLSet && (
 				<div className={'inner_frame'}>
-				<Button className={'edit_url_button'}>{__('Edit URL')}</Button>
+				<Button
+					variant = 'tertiary'
+					className={'edit_url_button'}
+					onClick = { () => SetVisibility('block')}>{__('Edit URL')}</Button>
+				<div className={'edit_url_input'} style={{display: visibility}}>
+					<URLInput />
+				</div>
 				<iframe src={'https://drive.google.com/file/d/'+embedID+'/preview?resourcekey='+resourceKey}/>
 				</div>
 			)}
