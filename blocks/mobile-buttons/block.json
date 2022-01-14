@@ -5,10 +5,31 @@
 	"version": "0.1.0",
 	"title": "FIM Mobile Buttons",
 	"category": "design",
-	"icon": "smiley",
+	"icon": "button",
 	"description": "Buttons for Mobile Landing Page",
 	"supports": {
 		"html": false
+	},
+	"attributes": {
+		"icon": {
+			"type": "string",
+            "default": "star"
+		},
+		"url":{
+            "type": "string"
+        },
+        "buttonText":{
+            "type": "string"
+        },
+        "targetBlank": {
+            "type": "boolean"
+        },
+        "iconColor": {
+            "type": "string"
+        },
+       "buttonColor": {
+            "type": "string"
+        }
 	},
 	"textdomain": "fim-blocks",
 	"editorScript": "file:./build/index.js",

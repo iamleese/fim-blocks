@@ -4,6 +4,158 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.wp-block-fim-blocks-mobile-buttons{
-	border: 1px dotted #f00;
+
+ .wp-block-fim-blocks-mobile-buttons {
+	color: black;
+	margin: 0 auto;
+	padding: 20px;
+	padding-bottom: 20px;
+   label{
+	   font-weight: 700;
+	   color: black;
+   }
+   
+   
+   
+   textarea.buttonText {
+	   background: transparent;
+	   border:0;
+	   border-radius: 0;
+	   width: 100%;
+	   text-align: center;
+	   &::placeholder{
+		   color: currentColor !important;
+		   opacity: .8;
+	   }
+	   
+	   &:placeholder-shown{
+		   color: currentColor !important;
+		   opacity: .8;
+	   }
+	   
+	   &:focus{
+		   color: currentColor !important;
+		   opacity: 1;
+	   }
+   }
+   
+   .icon{
+	   display: block;
+	   width: 30px;
+	   height: 30px;
+	   margin: 0 auto;
+	   svg{
+		   width: 30px;
+		   height: 30px;
+	   }
+   }
+   
+}
+.selectedIcon{
+	   display: flex;
+	   flex-flow: row nowrap;
+	   align-items: center;
+	   margin-bottom: 15px;
+   
+	   label{
+		   margin-right: 10px;    
+	   }
+	   
+	   .icon{
+		   font-size: 24px;
+	   }
+   }
+   
+.iconselect{
+   
+	   .components-base-control__field{
+		   display: grid;
+		   grid-template-columns: repeat(auto-fit, 50px);
+		   grid-template-rows: auto;
+		   height: 200px;
+		   overflow-y: auto;
+		   grid-gap: 5px;
+		   .components-radio-control__option{
+			   position: relative;
+			   height: 50px;
+			   width: 50px;
+			   input[type="radio"]{
+				   position:absolute;
+				   cursor: pointer;
+				   height: 50px;
+				   width: 50px;
+				   top:0;
+				   left: 0;
+				   border: 1px solid #e6e6e6;
+				   border-radius: 0;
+				   background: transparent;
+				   
+				   &:checked{
+					   background: transparent;
+					   border-color:#11a0d2;
+					   &:before{
+						   opacity: 0;
+					   }
+				   }
+			   }
+			   
+			   
+			   label{
+				   font-size: 24px;
+				   display: block;
+				   margin:0;
+				   position:absolute;
+				   top: 50%;
+				   left: 50%;
+				   transform: translate(-50%, -50%);
+			   }
+		   }//.components-radio-control__option
+	   }//.components-base-control__field
+   }//.iconselect
+
+.mobileOptions{
+   input[type='text']{
+	   width:90%;
+	   margin-bottom: 10px;
+	   border: 1px solid #ccc;
+	   
+   }
+   
+ 
+   .ButtonColorGroup,.IconColorGroup,.components-color-palette{
+	   margin-bottom: 10px;
+   }
+}
+
+.components-panel{
+   border: 0; 
+}
+
+.components-panel__row{
+   display: block;
+}
+
+
+.wp-block-fim-blocks-mobile-button-group{
+   display: block !important;
+   .wp-block{
+	   width: 100%;
+   }
+   
+   .block-editor-inner-blocks{
+	   .block-editor-block-list__layout{
+		   display: grid;
+		   grid-template-columns: repeat(var(--cols), 1fr);
+		   grid-template-rows: auto;
+		   grid-gap: var(--gap);
+		   justify-items: stretch;
+		   align-items: stretch;
+
+		   .wp-block{
+			   width: 100%;
+		   }
+
+	   }
+   }
+
 }
