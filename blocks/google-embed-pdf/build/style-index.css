@@ -7,14 +7,14 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
-.wp-block-fim-blocks-google-embed-pdf {
+.wp-block-fim-blocks-google-embed-pdf, .fim-pdf-embed {
   display: block;
   position: relative;
 }
-.wp-block-fim-blocks-google-embed-pdf.fullscreen {
+.wp-block-fim-blocks-google-embed-pdf.fullscreen, .fim-pdf-embed.fullscreen {
   height: 100vh;
 }
-.wp-block-fim-blocks-google-embed-pdf iframe {
+.wp-block-fim-blocks-google-embed-pdf iframe, .fim-pdf-embed iframe {
   display: block;
   position: absolute;
   top: 0;

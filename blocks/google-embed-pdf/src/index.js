@@ -19,6 +19,7 @@ import './style.scss';
  */
 import Edit from './edit';
 import save from './save';
+import deprecated from './deprecated';
 
 /**
  * Every block starts by registering a new block type definition.
@@ -35,4 +36,11 @@ registerBlockType('fim-blocks/google-embed-pdf', {
 	 * @see ./save.js
 	 */
 	save,
+
+	/**
+	 * @see ./deprecated
+	*/
+
+	deprecated,
+
 });
