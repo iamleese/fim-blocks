@@ -1,11 +1,8 @@
 /**
- * Registers a new block provided a unique name and an object defining its behavior.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
- */
+ * Registers a new block
+ **/
 import { registerBlockType } from '@wordpress/blocks';
 
- 
 /**
  * Webpack process for scss
  */
@@ -18,9 +15,7 @@ import Edit from './edit';
 import save from './save';
 
 /**
- * Every block starts by registering a new block type definition.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
+ * Registration
  */
 registerBlockType('fim-blocks/mobile-buttons', {
 	/**
