@@ -22,10 +22,23 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @return {WPElement} Element to render.
  */
-export default function save() {
+export default function save({attributes}) {
+
+	var embedString = attributes.embedURL;
+	var embedID = embedString ? embedString.match(/(?<=id=|d\/)([a-zA-Z0-9\-\_\~\.])+/g) : '';
+	var resourceKey = embedString ? embedString.match(/(?<=resourcekey=)([a-zA-Z0-9\-\_\~\.])+/g) : '';
+	var fullscreen = attributes.heightFullscreen ? 'full' : '';
+	var frameHeight = attributes.heightFullscreen ? '' : attributes.embedHeight + 'px';
+	var setHeight = embedID ? frameHeight : '' ;
+
+	const blockProps = useBlockProps.save({
+		className: { fullscreen },
+		style: { height: setHeight }
+	});
+
 	return (
-		<p {...useBlockProps.save()}>
-			{__('Fim Blocks – hello from the saved content!', 'fim-blocks')}
-		</p>
+		<div {...blockProps}>
+			<iframe src={'https://drive.google.com/file/d/'+embedID+'/preview?resourcekey='+resourceKey}/>
+		</div>
 	);
 }

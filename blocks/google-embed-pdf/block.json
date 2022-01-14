@@ -4,7 +4,7 @@
 	"name": "fim-blocks/google-embed-pdf",
 	"version": "0.1.0",
 	"title": "FIM Google PDF Embed",
-	"category": "embeds",
+	"category": "embed",
 	"icon": "media-document",
 	"description": "Embed a Google PDF from a public-viewable link",
 	"supports": {
