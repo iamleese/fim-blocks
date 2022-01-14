@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       FIM Blocks - Dev
+ * Plugin Name:       FIM Blocks
  * Description:       Custom blocks built by Faith in Marketing. Contains Facebook Album Embed, Google Drive PDF Embed, and Mobile Buttons.
  * Requires at least: 5.8
  * Requires PHP:      7.0
