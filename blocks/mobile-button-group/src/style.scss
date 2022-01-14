@@ -5,8 +5,24 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.wp-block-fim-blocks-mobile-button-group {
-	background-color: #21759b;
-	color: #fff;
-	padding: 2px;
+ .wp-block-fim-blocks-mobile-button-group{
+    &.cols1{
+        --cols: 1;
+    }
+    &.cols2{
+        --cols: 2;
+    }
+    &.cols3{
+        --cols: 3;
+    }
+    &.cols4{
+        --cols: 4;
+    }
+    display: grid;
+    justify-items: stretch;
+    align-items: stretch;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(var(--cols), 1fr);
+    grid-gap: var(--gap);
+    
 }

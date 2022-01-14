@@ -85,6 +85,7 @@ export default function Edit({attributes, setAttributes}) {
                                 />
                                 <URLInput
                                     label = "Button Link"
+                                    className = {"button_link_input"}
                                     value={ attributes.url }
                                     onChange={ ( link ) => setAttributes( { url : link } ) }
                                 />
