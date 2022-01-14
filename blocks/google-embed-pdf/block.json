@@ -2,7 +2,7 @@
 	"$schema": "https://json.schemastore.org/block.json",
 	"apiVersion": 2,
 	"name": "fim-blocks/google-embed-pdf",
-	"version": "0.1.0",
+	"version": "2.0.1",
 	"title": "FIM Google PDF Embed",
 	"category": "embed",
 	"icon": "media-document",

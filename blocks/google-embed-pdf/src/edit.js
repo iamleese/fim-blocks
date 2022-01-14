@@ -6,7 +6,7 @@
 import { __ } from '@wordpress/i18n';
 
 /**
- * Import 
+ * Import Block dependencies
  */
 
 import { TextControl, ToggleControl, PanelBody, PanelRow, Button, Popover, Dropdown, ToolbarButton } from '@wordpress/components';
@@ -15,20 +15,14 @@ import {pencil} from '@wordpress/icons';
 import {useEffect, useState} from '@wordpress/element';
 
 /**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * Those files can contain any CSS code that gets applied to the editor.
+ * CSS process
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './editor.scss';
 
 /**
- * The edit function describes the structure of your block in the context of the
- * editor. This represents what the editor will render when the block is used.
- *
- * @see https://developer.wordpress.org/block-editor/developers/block-api/block-edit-save/#edit
- *
- * @return {WPElement} Element to render.
+ * The edit function
  */
 export default function Edit( {attributes, setAttributes, isSelected} ) {
 	
