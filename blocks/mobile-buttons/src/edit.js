@@ -20,8 +20,10 @@ library.add(faAddressBook,faAddressCard,faAnchor,faAngleDoubleDown,faAngleDouble
 /**
  * Hooks, components, etc.
  */
-import { Panel, PanelBody, PanelRow, RadioControl, ColorIndicator, ToggleControl } from '@wordpress/components';
-import { useBlockProps,InspectorControls,ColorPalette, URLInput, PlainText } from '@wordpress/block-editor';
+import { Panel, PanelBody, PanelRow, RadioControl, ColorIndicator, ToggleControl, Button } from '@wordpress/components';
+import { useBlockProps,InspectorControls,ColorPalette, URLInput, PlainText, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
+import { useState } from '@wordpress/element';
+
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -45,6 +47,23 @@ export default function Edit({attributes, setAttributes}) {
 		style: {backgroundColor: attributes.buttonColor, color: attributes.iconColor }
 	});
 
+    const isCustomIcon = !! attributes.iconURL;
+
+    const onSelectIcon= (media) => {
+		setAttributes({
+			iconID: media.id,
+			iconURL: media.url
+		});
+	}
+
+    const removeCustomIcon = () => {
+		setAttributes({
+			iconID: '',
+			iconURL: ''
+		});
+	}
+   
+
 	var iconlist = library.definitions.fas;
 	var iconCode;
 	let iconOptions = Object.keys(iconlist).map( iconname => {
@@ -57,9 +76,15 @@ export default function Edit({attributes, setAttributes}) {
 		<div {...blockProps}>
 			<div className='buttonlink'>
                 <div className='inner_button'>
-                    <div className='icon'>
-                        <FontAwesomeIcon icon={attributes.icon} />
-                    </div>
+                    {! isCustomIcon && (
+                        <div className='icon'>
+                            <FontAwesomeIcon icon={attributes.icon} />
+                        </div>
+                    )}
+                    
+                    {isCustomIcon && (
+                            <img src={attributes.iconURL}  className={'custom-icon'} />
+                        )}
                     <PlainText
                         className='buttonText'
                         value={ attributes.buttonText }
@@ -83,6 +108,39 @@ export default function Edit({attributes, setAttributes}) {
                                     options={ iconOptions }
                                     onChange = { ( option ) => { setAttributes( { icon : option } ) } }
                                 />
+                                <div className="custom-icon">
+                                    <label>Custom Icon:</label>
+                                {isCustomIcon && (
+                                    <img src={attributes.iconURL} className={'iconPreview'} />
+                                )}
+                                <MediaUploadCheck>
+                                    <MediaUpload
+                                        onSelect={ onSelectIcon}
+                                        allowedTypes={ ['image'] }
+                                        value={ attributes.iconID }
+                                        render={ ( { open } ) => (
+                                            <Button
+                                            onClick={ open }
+                                            type="tertiary" >
+                                                {! isCustomIcon && (
+                                                    __('Open Media Library','fim-blocks')
+                                                )}
+                                                {isCustomIcon && (
+                                                    __('Replace Icon','fim-blocks')
+                                                )}
+                                            </Button>
+                                        ) }
+                                    />
+                                </MediaUploadCheck>
+                                {isCustomIcon && (
+                                    <Button
+                                        type="tertiary"
+                                        onClick={removeCustomIcon}
+                                    >
+                                        { __('Remove Custom Icon','fim-blocks') }
+                                    </Button>
+                                )}
+                                </div>
                                 <URLInput
                                     label = "Button Link"
                                     className = {"button_link_input"}

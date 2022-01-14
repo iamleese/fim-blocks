@@ -32,6 +32,9 @@ export default function save({attributes}) {
 
 	var target = attributes.targetBlank ? '_blank': null;
 	var rel = attributes.targetBlank ? 'noopener noreferrer' : null;
+
+	const isCustomIcon = !! attributes.iconURL;
+
 	
 	const blockProps = useBlockProps.save({
 		style: {backgroundColor: attributes.buttonColor, color: attributes.iconColor }
@@ -41,9 +44,14 @@ export default function save({attributes}) {
 		<div {...blockProps} >
 		 <a href={attributes.url} target={target} rel={rel}>
 		<div className='inner_button'>
-		 <div className='icon'>
-			<FontAwesomeIcon icon={attributes.icon} />
-		</div>
+			{! isCustomIcon && (
+				<div className='icon'>
+					<FontAwesomeIcon icon={attributes.icon} />
+				</div>
+			)}			
+		{isCustomIcon && (
+			<img src={attributes.iconURL}  className={'custom-icon'} />
+		)}
 		<span className='buttonText'>{ attributes.buttonText }</span>
 		</div>
 		</a>
