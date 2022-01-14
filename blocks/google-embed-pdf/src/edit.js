@@ -6,21 +6,13 @@
 import { __ } from '@wordpress/i18n';
 
 /**
- * Loads components
- * @see https://developer.wordpress.org/block-editor/reference-guides/components/
+ * Import 
  */
 
-import { TextControl, ToggleControl, PanelBody, PanelRow, Button } from '@wordpress/components';
-
-/**
- * React hook that is used to mark the block wrapper element and add Inspector Controls
- *
- * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
- */
-import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
-
-
-import {useState} from '@wordpress/element';
+import { TextControl, ToggleControl, PanelBody, PanelRow, Button, Popover, Dropdown, ToolbarButton } from '@wordpress/components';
+import { useBlockProps, InspectorControls, BlockControls } from '@wordpress/block-editor';
+import {pencil} from '@wordpress/icons';
+import {useEffect, useState} from '@wordpress/element';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -38,36 +30,47 @@ import './editor.scss';
  *
  * @return {WPElement} Element to render.
  */
-export default function Edit( {attributes, setAttributes} ) {
+export default function Edit( {attributes, setAttributes, isSelected} ) {
+	
+	const [ isEditingURL, setIsEditingURL ] = useState( false );
+	const isURLSet = !! attributes.embedURL;
+	const [ UrlValue, setUrlValue ] = useState('');
 
-	const [ UrlValue, setUrlValue ] = useState(attributes.embedURL);
-	const [ visibility, SetVisibility] = useState('none');
 
 	//textbox for the URL
 	const inputStyle = {
 		width: '100%'
 		}
-	const isURLSet = !! attributes.embedURL;
+	
 	var embedString = attributes.embedURL;
-
 	var embedID = embedString ? embedString.match(/(?<=id=|d\/)([a-zA-Z0-9\-\_\~\.])+/g) : '';
 	var resourceKey = embedString ? embedString.match(/(?<=resourcekey=)([a-zA-Z0-9\-\_\~\.])+/g) : '';
-
-	
 	var fullscreen = attributes.heightFullscreen ? 'full' : '';
 	var frameHeight = attributes.heightFullscreen ? '' : attributes.embedHeight + 'px';
 	var setHeight = embedID ? frameHeight : '' ;
 	
-	const blockProps = useBlockProps({
-		className: { fullscreen },
-		style: { height: setHeight }
-	});
+	useEffect( () => {
+		if ( ! isSelected ) {
+			setIsEditingURL( false );
+		}
+	}, [ isSelected ] );
 
+	//Functions
 	function handleURLInput(){
 		setAttributes({embedURL : UrlValue });
-		SetVisibility('none');
+		setIsEditingURL( false );
 	}
 
+	function toggleEditing( event ) {
+		event.preventDefault();
+		if(isEditingURL == false){
+			setIsEditingURL( true );
+			setUrlValue(attributes.embedURL);
+		} else {
+			setIsEditingURL( false );
+		}
+		
+	}
 
 	const URLInput = () => {
 		return (
@@ -75,11 +78,11 @@ export default function Edit( {attributes, setAttributes} ) {
 			<TextControl
 				name= 'googleUrl'
 				label='Google Drive PDF URL'
-				value= { attributes.embedURL } 
+				value= { UrlValue } 
 				help = {__('eg. https://drive.google.com/open?id=1aC6slHadaja2zhbjvHWAozLvlsOPLIzx','fim-blocks')}
 				style = { inputStyle }
 				className = 'url-input'
-				onChange = {( value ) => setUrlValue( value )}/>
+				onChange = {(val) => setUrlValue(val)}/>
 			<Button
 				variant = 'tertiary'
 				onClick= { () => handleURLInput()  }
@@ -89,6 +92,15 @@ export default function Edit( {attributes, setAttributes} ) {
 		);
 	}
 
+
+	
+	const blockProps = useBlockProps({
+		className: { fullscreen },
+		style: { height: setHeight }
+	});
+
+	
+
 	return (
 		<div {...blockProps}>
 			{! isURLSet && (
@@ -97,16 +109,36 @@ export default function Edit( {attributes, setAttributes} ) {
 			
 			{ isURLSet && (
 				<div className={'inner_frame'}>
+					
 				<Button
 					variant = 'tertiary'
-					className={'edit_url_button'}
-					onClick = { () => SetVisibility('block')}>{__('Edit URL')}</Button>
-				<div className={'edit_url_input'} style={{display: visibility}}>
-					<URLInput />
-				</div>
+					className={'edit_url_button'} />
 				<iframe src={'https://drive.google.com/file/d/'+embedID+'/preview?resourcekey='+resourceKey}/>
 				</div>
 			)}
+			
+			
+
+			<BlockControls>
+				{isURLSet && (
+					<ToolbarButton
+						name="editURL"
+						icon={ pencil }
+						title={ __( 'Edit URL' ) }
+						onClick = { toggleEditing }
+					> Edit PDF URL 
+					</ToolbarButton>
+				)}
+				{ isURLSet && isEditingURL && (
+					<Popover
+						position = 'bottom center'
+						onClose={ () => { setIsEditingURL( false ); } }
+					>
+					<URLInput />
+
+					</Popover>
+			)}
+			</BlockControls>
 
 			<InspectorControls>
 				<PanelBody
