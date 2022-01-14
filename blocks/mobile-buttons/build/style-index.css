@@ -8,9 +8,45 @@
  * Replace them with your own styles or remove the file completely.
  */
 .wp-block-fim-blocks-mobile-buttons {
-  background-color: #21759b;
-  color: #fff;
-  padding: 2px;
+  color: #000000;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  padding-bottom: 100%;
+  position: relative;
+}
+.wp-block-fim-blocks-mobile-buttons a, .wp-block-fim-blocks-mobile-buttons .buttonlink {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: currentColor !important;
+  text-decoration: none;
+}
+.wp-block-fim-blocks-mobile-buttons .inner_button {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.wp-block-fim-blocks-mobile-buttons .icon {
+  display: block;
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
+}
+.wp-block-fim-blocks-mobile-buttons .icon svg {
+  width: 30px;
+  height: 30px;
+}
+.wp-block-fim-blocks-mobile-buttons .buttonText {
+  text-align: center;
+  font-size: 16px;
+  color: inherit;
 }
 
 /*# sourceMappingURL=style-index.css.map*/

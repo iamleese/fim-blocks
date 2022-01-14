@@ -6,6 +6,12 @@
 import { __ } from '@wordpress/i18n';
 
 /**
+ * FontAwesome container
+ */
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+/**
  * React hook that is used to mark the block wrapper element.
  * It provides all the necessary props like the class name.
  *
@@ -22,10 +28,25 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @return {WPElement} Element to render.
  */
-export default function save() {
+export default function save({attributes}) {
+
+	var target = attributes.targetBlank ? '_blank': null;
+	var rel = attributes.targetBlank ? 'noopener noreferrer' : null;
+	
+	const blockProps = useBlockProps.save({
+		style: {backgroundColor: attributes.buttonColor, color: attributes.iconColor }
+	});
+
 	return (
-		<p {...useBlockProps.save()}>
-			{__('Fim Blocks – hello from the saved content!', 'fim-blocks')}
-		</p>
+		<div {...blockProps} >
+		 <a href={attributes.url} target={target} rel={rel}>
+		<div className='inner_button'>
+		 <div className='icon'>
+			<FontAwesomeIcon icon={attributes.icon} />
+		</div>
+		<span className='buttonText'>{ attributes.buttonText }</span>
+		</div>
+		</a>
+		</div>
 	);
 }

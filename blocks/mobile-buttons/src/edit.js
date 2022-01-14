@@ -20,7 +20,7 @@ library.add(faAddressBook,faAddressCard,faAnchor,faAngleDoubleDown,faAngleDouble
 /**
  * Hooks, components, etc.
  */
-import { Panel, PanelBody, PanelRow, RadioControl, ColorIndicator, TextControl, ToggleControl } from '@wordpress/components';
+import { Panel, PanelBody, PanelRow, RadioControl, ColorIndicator, ToggleControl } from '@wordpress/components';
 import { useBlockProps,InspectorControls,ColorPalette, URLInput, PlainText } from '@wordpress/block-editor';
 
 /**
@@ -99,7 +99,6 @@ export default function Edit({attributes, setAttributes}) {
                                 </div>
                                   <ColorPalette 
                                       value={ attributes.iconColor}
-                                      disableCustomColors = 'true'
                                       onChange={ ( color ) => setAttributes( {iconColor : color }) }
                                   />
                                 <div className='ButtonColorGroup'>
@@ -107,8 +106,7 @@ export default function Edit({attributes, setAttributes}) {
                                     <ColorIndicator colorValue={attributes.buttonColor} />
                                 </div>
                                   <ColorPalette 
-                                      value={ attributes.buttonColor }
-                                      disableCustomColors = 'true'
+                                      value={ attributes.buttonColor }  
                                       onChange={ ( color ) => setAttributes( { buttonColor : color }) }
                                   />
                             </PanelRow>
