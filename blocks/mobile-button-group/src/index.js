@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
-import { registerBlockType } from '@wordpress/blocks';
+import { registerBlockType, setDefaultBlockName } from '@wordpress/blocks';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -21,9 +21,12 @@ import Edit from './edit';
 import save from './save';
 
 /**
- * Every block starts by registering a new block type definition.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
+ * Use only the mobile-button block as a default
+ */
+ setDefaultBlockName('fim-blocks/mobile-buttons');
+
+/**
+ * register block
  */
 registerBlockType('fim-blocks/mobile-button-group', {
 	/**

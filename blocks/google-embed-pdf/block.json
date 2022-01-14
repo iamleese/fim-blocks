@@ -25,7 +25,6 @@
 			"selector": "value",
 			"default": "1200"
 		}
-		
 	},
 	"textdomain": "fim-blocks",
 	"editorScript": "file:./build/index.js",

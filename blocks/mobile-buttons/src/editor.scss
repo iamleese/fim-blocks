@@ -4,6 +4,166 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.wp-block-fim-blocks-mobile-buttons{
-	border: 1px dotted #f00;
+
+ .wp-block-fim-blocks-mobile-buttons {
+	color: black;
+	margin: 0 auto !important;
+
+   label{
+	   font-weight: 700;
+	   color: black;
+   }
+   
+   
+   
+   textarea.buttonText {
+	   background: transparent;
+	   border:0;
+	   border-radius: 0;
+	   width: 100%;
+	   text-align: center;
+	   &::placeholder{
+		   color: currentColor !important;
+		   opacity: .8;
+	   }
+	   
+	   &:placeholder-shown{
+		   color: currentColor !important;
+		   opacity: .8;
+	   }
+	   
+	   &:focus{
+		   color: currentColor !important;
+		   opacity: 1;
+	   }
+   }
+   
+   .icon{
+	   display: block;
+	   width: 30px;
+	   height: 30px;
+	   margin: 0 auto;
+	   svg{
+		   width: 30px;
+		   height: 30px;
+	   }
+   }
+   
+} //.wp-block-fim-blocks-mobile-buttons
+
+.selectedIcon{
+	   display: flex;
+	   flex-flow: row nowrap;
+	   align-items: center;
+	   margin-bottom: 15px;
+   
+	   label{
+		   margin-right: 10px;    
+	   }
+	   
+	   .icon{
+		   font-size: 24px;
+	   }
+   }
+   
+.iconselect{
+   
+	   .components-base-control__field{
+		   display: grid;
+		   grid-template-columns: repeat(auto-fit, 50px);
+		   grid-template-rows: auto;
+		   height: 200px;
+		   overflow-y: auto;
+		   grid-gap: 5px;
+		   .components-radio-control__option{
+			   position: relative;
+			   height: 50px;
+			   width: 50px;
+			   input[type="radio"]{
+				   position:absolute;
+				   cursor: pointer;
+				   height: 50px;
+				   width: 50px;
+				   top:0;
+				   left: 0;
+				   border: 1px solid #e6e6e6;
+				   border-radius: 0;
+				   background: transparent;
+				   
+				   &:checked{
+					   background: transparent;
+					   border-color:#11a0d2;
+					   &:before{
+						   opacity: 0;
+					   }
+				   }
+			   }
+			   
+			   
+			   label{
+				   font-size: 24px;
+				   display: block;
+				   margin:0;
+				   position:absolute;
+				   top: 50%;
+				   left: 50%;
+				   transform: translate(-50%, -50%);
+			   }
+		   }//.components-radio-control__option
+	   }//.components-base-control__field
+   }//.iconselect
+
+.mobileOptions{
+   input[type='text']{
+	   width:90%;
+	   margin-bottom: 10px;
+	   border: 1px solid #ccc;
+	   
+   }
+   
+ 
+   .ButtonColorGroup,.IconColorGroup,.components-color-palette{
+	   margin-bottom: 10px;
+   }
 }
+
+.components-panel{
+   border: 0; 
+
+   .custom-icon{
+		padding: 1em 0;
+		border-top: 1px solid #cccccc;
+		border-bottom: 1px solid #cccccc;
+		
+		label{
+			display: block;
+			clear: both;
+			margin-bottom: 20px;
+		}
+		img{
+			display: block;
+			clear: both;
+			width: 30px;
+			margin:0 auto;
+			height: 30px;
+			background-color: #999999;
+			object-fit: contain;
+			background-position: center;
+			margin-bottom: 20px;
+		}
+
+		button{
+			border: 1px solid #000000;
+			margin-bottom: 10px;
+		}
+	}
+}
+
+.components-panel__row{
+   display: block;
+}
+
+.button_link_input{
+	margin-bottom:0 !important;
+}
+
