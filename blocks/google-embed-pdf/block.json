@@ -3,10 +3,10 @@
 	"apiVersion": 2,
 	"name": "fim-blocks/google-embed-pdf",
 	"version": "2.0.1",
-	"title": "FIM Google PDF Embed",
+	"title": "FIM Google Embed",
 	"category": "embed",
 	"icon": "media-document",
-	"description": "Embed a Google PDF from a public-viewable link",
+	"description": "Embed a Google Document from a public-viewable link",
 	"supports": {
 		"html": false
 	},
