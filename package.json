@@ -26,6 +26,6 @@
 		"loader-utils": "^3.2.1"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^19.2.2"
+		"@wordpress/scripts": "^24.6.0"
 	}
 }
