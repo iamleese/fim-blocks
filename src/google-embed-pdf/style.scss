@@ -8,10 +8,7 @@
 .wp-block-fim-blocks-google-embed-pdf, .fim-pdf-embed {
 	display: block;
 	position: relative;
-
-	&.fullscreen{
-		height: 100vh;
-	}
+	height: 80vh;
 
 	iframe{
 		display: block;
