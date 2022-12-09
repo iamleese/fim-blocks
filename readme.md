@@ -2,7 +2,7 @@
 Contributors:      Melissa Hiatt, Faith in Marketing
 Tags:              block
 Tested up to:      5.8.0
-Stable tag:        2.0.1
+Stable tag:        2.1
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,9 +14,12 @@ This is a rebuild of the original FIM Blocks using the official Wordpress `creat
 **This plugin contains the following blocks:**
 - Google PDF Embed: Embeds a Google PDF via a public-viewable link
 - Mobile Button Group / Mobile Buttons: A button template for mobile landing pages.
-- TODO. CFF Album Embed: *This may not be supported in the future*
 
 ## Changelog
+### 2.1
+- Restructured blocks.
+- Fixed embed height in PDF block.
+
 ### 2.0.1
 Rebuild of all blocks. Fixed deprecations
 
