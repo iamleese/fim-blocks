@@ -38,7 +38,7 @@ export default function save({attributes}) {
 
 	return (
 		<div {...blockProps}>
-			<iframe src={'https://drive.google.com/file/d/'+embedID+'/preview?resourcekey='+resourceKey}/>
+			<iframe src={'https://drive.google.com/file/d/'+embedID+'/preview'}/>
 		</div>
 	);
 }
