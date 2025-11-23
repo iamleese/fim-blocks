@@ -5,7 +5,7 @@ Deprecated version
 import classnames from 'classnames';
 
 
-const deprecated = [
+const v1 = [
 	{
         save({attributes}){
             var embedString = attributes.embedURL;
@@ -34,4 +34,33 @@ const deprecated = [
 	},
 ];
 
-export default deprecated;
+
+const v2= [
+	{
+        save({attributes}){
+            var embedString = attributes.embedURL;
+            var embedID = embedString ? embedString.match(/(?<=id=|d\/)([a-zA-Z0-9\-\_\~\.])+/g) : '';
+            var resourceKey = embedString ? embedString.match(/(?<=resourcekey=)([a-zA-Z0-9\-\_\~\.])+/g) : '';
+            var fullscreen = attributes.heightFullscreen ? 'full' : '';
+            var frameHeight = attributes.heightFullscreen ? '' : attributes.embedHeight + 'px';
+            var setHeight = embedID ? frameHeight : '' ;
+            
+            const blockProps = useBlockProps.save({
+                className: { fullscreen },
+                style:  fullscreen ? '' : { height: setHeight } 
+            });
+
+        
+            return (
+                <div {...blockProps}>
+                    <iframe src={'https://drive.google.com/file/d/'+embedID+'/preview?resourcekey='+resourceKey}/>
+                </div>
+            );
+
+        }
+       
+            
+	},
+];
+
+export default [v2,v1];
