@@ -4,8 +4,30 @@ Deprecated version
 
 import classnames from 'classnames';
 
-
 const v1 = [
+    {
+        save({attributes}){
+            var embedString = attributes.embedURL;
+            var embedID = embedString ? embedString.match(/(?<=id=|d\/)([a-zA-Z0-9\-\_\~\.])+/g) : '';
+            
+
+            const classNames = classnames('fim-pdf-embed');
+
+        
+            return (
+                <div className={classNames} style={{height: '1200px'}}>
+                  <iframe
+                    src={'https://docs.google.com/viewer?srcid='+embedID+'&amp;pid=explorer&amp;efh=false&amp;a=v&amp;chrome=false&amp;embedded=true'}
+                        />
+                </div>
+
+            );
+
+        }
+    }
+]
+
+const v2 = [
 	{
         save({attributes}){
             var embedString = attributes.embedURL;
@@ -35,7 +57,7 @@ const v1 = [
 ];
 
 
-const v2= [
+const v3= [
 	{
         save({attributes}){
             var embedString = attributes.embedURL;
@@ -63,4 +85,4 @@ const v2= [
 	},
 ];
 
-export default [v2,v1];
+export default [v3,v2,v1];
