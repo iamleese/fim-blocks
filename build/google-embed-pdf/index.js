@@ -61,12 +61,21 @@ const v1 = [{
     } = _ref;
     var embedString = attributes.embedURL;
     var embedID = embedString ? embedString.match(/(?<=id=|d\/)([a-zA-Z0-9\-\_\~\.])+/g) : '';
+    var fullscreen, emHeight;
+    if (heightFullscreen == true) {
+      fullscreen = 'full';
+    } else {
+      fullscreen = '';
+      emHeight = embedHeight;
+      //get height
+      var divStyle = {
+        height: emHeight + 'px'
+      };
+    }
     const classNames = classnames__WEBPACK_IMPORTED_MODULE_1___default()('fim-pdf-embed');
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: classNames,
-      style: {
-        height: '1200px'
-      }
+      className: "fim-pdf-embed " + fullscreen,
+      style: divStyle
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("iframe", {
       src: 'https://docs.google.com/viewer?srcid=' + embedID + '&amp;pid=explorer&amp;efh=false&amp;a=v&amp;chrome=false&amp;embedded=true'
     }));

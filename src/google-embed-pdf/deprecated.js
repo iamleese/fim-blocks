@@ -9,14 +9,24 @@ const v1 = [
         save({attributes}){
             var embedString = attributes.embedURL;
             var embedID = embedString ? embedString.match(/(?<=id=|d\/)([a-zA-Z0-9\-\_\~\.])+/g) : '';
-            
+            var fullscreen,emHeight;
+				if(heightFullscreen == true){
+					fullscreen = 'full';
+				} else {
+					fullscreen = '';
+					emHeight = embedHeight;
+					//get height
+					var divStyle = {
+						height: emHeight + 'px'
+					}
+				}
 
             const classNames = classnames('fim-pdf-embed');
 
         
-            return (
-                <div className={classNames} style={{height: '1200px'}}>
-                  <iframe
+           return (
+				<div className={"fim-pdf-embed " + fullscreen} style={divStyle} >
+					<iframe
                     src={'https://docs.google.com/viewer?srcid='+embedID+'&amp;pid=explorer&amp;efh=false&amp;a=v&amp;chrome=false&amp;embedded=true'}
                         />
                 </div>
