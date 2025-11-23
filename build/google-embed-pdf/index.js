@@ -61,6 +61,24 @@ const v1 = [{
     } = _ref;
     var embedString = attributes.embedURL;
     var embedID = embedString ? embedString.match(/(?<=id=|d\/)([a-zA-Z0-9\-\_\~\.])+/g) : '';
+    const classNames = classnames__WEBPACK_IMPORTED_MODULE_1___default()('fim-pdf-embed');
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: classNames,
+      style: {
+        height: '1200px'
+      }
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("iframe", {
+      src: 'https://docs.google.com/viewer?srcid=' + embedID + '&amp;pid=explorer&amp;efh=false&amp;a=v&amp;chrome=false&amp;embedded=true'
+    }));
+  }
+}];
+const v2 = [{
+  save(_ref2) {
+    let {
+      attributes
+    } = _ref2;
+    var embedString = attributes.embedURL;
+    var embedID = embedString ? embedString.match(/(?<=id=|d\/)([a-zA-Z0-9\-\_\~\.])+/g) : '';
     var fullscreen = attributes.heightFullscreen ? 'full' : '';
     var frameHeight = attributes.heightFullscreen ? '' : attributes.embedHeight + 'px';
     var setHeight = embedID ? frameHeight + 'px' : '';
@@ -75,11 +93,11 @@ const v1 = [{
     }));
   }
 }];
-const v2 = [{
-  save(_ref2) {
+const v3 = [{
+  save(_ref3) {
     let {
       attributes
-    } = _ref2;
+    } = _ref3;
     var embedString = attributes.embedURL;
     var embedID = embedString ? embedString.match(/(?<=id=|d\/)([a-zA-Z0-9\-\_\~\.])+/g) : '';
     var resourceKey = embedString ? embedString.match(/(?<=resourcekey=)([a-zA-Z0-9\-\_\~\.])+/g) : '';
@@ -99,7 +117,7 @@ const v2 = [{
     }));
   }
 }];
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([v2, v1]);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([v3, v2, v1]);
 
 /***/ }),
 

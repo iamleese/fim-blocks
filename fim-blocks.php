@@ -5,7 +5,7 @@
  * Requires at least: 6.0
  * Requires PHP:      7.1
  * Version:           2.1.3
- * Author:            The WordPress Contributors
+ * Author:            Melissa Hiatt, Faith in Marketing
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       fim-blocks
