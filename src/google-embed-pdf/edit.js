@@ -107,7 +107,7 @@ export default function Edit( {attributes, setAttributes, isSelected} ) {
 				<Button
 					variant = 'tertiary'
 					className={'edit_url_button'} />
-				<iframe src={'https://drive.google.com/file/d/'+embedID+'/preview?resourcekey='+resourceKey}/>
+				<iframe src={'https://drive.google.com/file/d/'+embedID+'/preview'}/>
 				</div>
 			)}
 			
