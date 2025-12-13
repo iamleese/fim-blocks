@@ -389,7 +389,7 @@ function save(_ref) {
     attributes
   } = _ref;
   var embedString = attributes.embedURL;
-  var embedID = embedString ? embedString.match(/(?<=id=|d\/)([a-zA-Z0-9\-\_\~\.])+/g) : '';
+  var embedID = embedString ? embedString.match(/\/d\/([a-zA-Z0-9_-]+)/)?.[1] : '';
   var resourceKey = embedString ? embedString.match(/(?<=resourcekey=)([a-zA-Z0-9\-\_\~\.])+/g) : '';
   var fullscreen = attributes.heightFullscreen ? 'full' : '';
   var frameHeight = attributes.heightFullscreen ? '' : attributes.embedHeight + 'px';
