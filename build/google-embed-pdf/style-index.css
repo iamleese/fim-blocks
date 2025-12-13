@@ -1,1 +1,25 @@
-.fim-pdf-embed,.wp-block-fim-blocks-google-embed-pdf{display:block;height:80vh;position:relative}.fim-pdf-embed iframe,.wp-block-fim-blocks-google-embed-pdf iframe{display:block;height:100%;left:0;overflow-y:scroll;position:absolute;top:0;width:100%}
+/*!********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/google-embed-pdf/style.scss ***!
+  \********************************************************************************************************************************************************************************************************************************************************/
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.wp-block-fim-blocks-google-embed-pdf, .fim-pdf-embed {
+  display: block;
+  position: relative;
+  height: 80vh;
+}
+.wp-block-fim-blocks-google-embed-pdf iframe, .fim-pdf-embed iframe {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+/*# sourceMappingURL=style-index.css.map*/
