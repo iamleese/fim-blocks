@@ -24,20 +24,26 @@ import { useBlockProps } from '@wordpress/block-editor';
  */
 export default function save({attributes}) {
 
-	var embedString = attributes.embedURL;
-	var embedID = embedString ? embedString.match(/(?:\/d\/|id=)([a-zA-Z0-9_-]+)/)?.[1] : '';
-	var fullscreen = attributes.heightFullscreen ? 'full' : '';
-	var frameHeight = attributes.heightFullscreen ? '' : attributes.embedHeight + 'px';
-	var setHeight = embedID ? frameHeight : '' ;
+	const embedString = attributes.embedURL;
+
+	const embedID = embedString
+		? embedString.match(/\/d\/([a-zA-Z0-9_-]+)/)?.[1]
+		: '';
+
+	const fullscreen = attributes.heightFullscreen ? 'full' : '';
+	const frameHeight = attributes.heightFullscreen ? '' : attributes.embedHeight + 'px';
 
 	const blockProps = useBlockProps.save({
-		className: { fullscreen },
-		style:  fullscreen ? '' : { height: setHeight } 
+		className: fullscreen,
+		style: attributes.heightFullscreen ? {} : { height: frameHeight },
 	});
 
 	return (
 		<div {...blockProps}>
-			<iframe src={'https://drive.google.com/file/d/'+embedID+'/preview'}/>
+			<iframe
+				src={`https://drive.google.com/file/d/${embedID}/preview`}
+				allowFullScreen
+			/>
 		</div>
 	);
 }

@@ -193,8 +193,7 @@ function Edit(_ref) {
     width: '100%'
   };
   var embedString = attributes.embedURL;
-  var embedID = embedString ? embedString.match(/(?<=id=|d\/)([a-zA-Z0-9\-\_\~\.])+/g) : '';
-  var resourceKey = embedString ? embedString.match(/(?<=resourcekey=)([a-zA-Z0-9\-\_\~\.])+/g) : '';
+  var embedID = embedString ? embedString.match(/\/d\/([a-zA-Z0-9_-]+)/)?.[1] : '';
   var fullscreen = attributes.heightFullscreen ? 'full' : '';
   var frameHeight = attributes.heightFullscreen ? '' : attributes.embedHeight + 'px';
   var setHeight = embedID ? frameHeight : '';
@@ -250,7 +249,7 @@ function Edit(_ref) {
     variant: "tertiary",
     className: 'edit_url_button'
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("iframe", {
-    src: 'https://drive.google.com/file/d/' + embedID + '/preview'
+    src: `https://drive.google.com/file/d/${embedID}/preview`
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.BlockControls, null, isURLSet && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToolbarButton, {
     name: "editURL",
     icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["default"],
@@ -388,21 +387,19 @@ function save(_ref) {
   let {
     attributes
   } = _ref;
-  var embedString = attributes.embedURL;
-  var embedID = embedString ? embedString.match(/(?:\/d\/|id=)([a-zA-Z0-9_-]+)/)?.[1] : '';
-  var fullscreen = attributes.heightFullscreen ? 'full' : '';
-  var frameHeight = attributes.heightFullscreen ? '' : attributes.embedHeight + 'px';
-  var setHeight = embedID ? frameHeight : '';
+  const embedString = attributes.embedURL;
+  const embedID = embedString ? embedString.match(/\/d\/([a-zA-Z0-9_-]+)/)?.[1] : '';
+  const fullscreen = attributes.heightFullscreen ? 'full' : '';
+  const frameHeight = attributes.heightFullscreen ? '' : attributes.embedHeight + 'px';
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save({
-    className: {
-      fullscreen
-    },
-    style: fullscreen ? '' : {
-      height: setHeight
+    className: fullscreen,
+    style: attributes.heightFullscreen ? {} : {
+      height: frameHeight
     }
   });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("iframe", {
-    src: 'https://drive.google.com/file/d/' + embedID + '/preview'
+    src: `https://drive.google.com/file/d/${embedID}/preview`,
+    allowFullScreen: true
   }));
 }
 
