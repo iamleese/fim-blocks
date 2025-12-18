@@ -1,8 +1,8 @@
 # FIM Blocks
 Contributors:      Melissa Hiatt, Faith in Marketing
 Tags:              block
-Tested up to:      5.8.0
-Stable tag:        2.1.3
+Tested up to:      6.9
+Stable tag:        2.1.4
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
