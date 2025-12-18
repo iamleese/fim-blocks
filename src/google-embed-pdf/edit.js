@@ -37,8 +37,9 @@ export default function Edit( {attributes, setAttributes, isSelected} ) {
 		}
 	
 	var embedString = attributes.embedURL;
-	var embedID = embedString ? embedString.match(/(?<=id=|d\/)([a-zA-Z0-9\-\_\~\.])+/g) : '';
-	var resourceKey = embedString ? embedString.match(/(?<=resourcekey=)([a-zA-Z0-9\-\_\~\.])+/g) : '';
+	var embedID = embedString
+		? embedString.match(/\/d\/([a-zA-Z0-9_-]+)/)?.[1]
+		: '';
 	var fullscreen = attributes.heightFullscreen ? 'full' : '';
 	var frameHeight = attributes.heightFullscreen ? '' : attributes.embedHeight + 'px';
 	var setHeight = embedID ? frameHeight : '' ;
@@ -107,7 +108,7 @@ export default function Edit( {attributes, setAttributes, isSelected} ) {
 				<Button
 					variant = 'tertiary'
 					className={'edit_url_button'} />
-				<iframe src={'https://drive.google.com/file/d/'+embedID+'/preview'}/>
+				<iframe src={`https://drive.google.com/file/d/${embedID}/preview`}/>
 				</div>
 			)}
 			
