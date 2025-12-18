@@ -16,6 +16,9 @@ This is a rebuild of the original FIM Blocks using the official Wordpress `creat
 - Mobile Button Group / Mobile Buttons: A button template for mobile landing pages.
 
 ## Changelog
+### 2.1.4 (12/17/2025)
+- Fixed Google Embed URL
+
 ### 2.1.3 (11/22/2025)
 - Added Deprecations
 
